@@ -1,5 +1,5 @@
 [Unit]
-Description=PHP8.1 FastCGI Process Manager
+Description=PHP8.2 FastCGI Process Manager
 After=docker.service
 Requires=docker.service
 
@@ -9,10 +9,10 @@ ExecStartPre=-/bin/docker create \
               --publish 9000:9000/tcp \
               --mount type=bind,source="/srv",target="/srv" \
               --mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly \
-              --name php81-fpm \
-              hetsh/php81-fpm
-ExecStart=/bin/docker start --attach php81-fpm
-ExecStop=/bin/docker stop php81-fpm
+              --name php82-fpm \
+              hetsh/php82-fpm
+ExecStart=/bin/docker start --attach php82-fpm
+ExecStop=/bin/docker stop php82-fpm
 
 [Install]
 WantedBy=multi-user.target

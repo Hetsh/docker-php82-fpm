@@ -19,7 +19,7 @@ if ! docker version &> /dev/null; then
 	exit 1
 fi
 
-IMG_NAME="hetsh/php81-fpm"
+IMG_NAME="hetsh/php82-fpm"
 case "${1-}" in
 	# Build and test with default configuration
 	"--test")

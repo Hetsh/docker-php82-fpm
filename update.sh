@@ -21,8 +21,8 @@ update_image "amd64/alpine" "Alpine Linux" "false" "\d{8}"
 
 # Packages
 PKG_URL="https://pkgs.alpinelinux.org/package/edge/community/x86_64"
-update_pkg "php81" "PHP8.1" "false" "$PKG_URL" "(\d+\.)+\d+-r\d+"
-update_pkg "php81-fpm" "PHP8.1 FPM" "true" "$PKG_URL" "(\d+\.)+\d+-r\d+"
+update_pkg "php82" "PHP8.2" "false" "$PKG_URL" "(\d+\.)+\d+-r\d+"
+update_pkg "php82-fpm" "PHP8.2 FPM" "true" "$PKG_URL" "(\d+\.)+\d+-r\d+"
 
 if ! updates_available; then
 	#echo "No updates available."
