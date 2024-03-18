@@ -4,15 +4,21 @@ RUN apk add --no-cache \
         php82-fpm=8.2.17-r0
 
 # App user
-ARG OLD_USER="xfs"
 ARG APP_USER="http"
-ARG APP_UID=33
-ARG OLD_GROUP="xfs"
-ARG APP_GROUP="http"
-ARG APP_GID=33
-# "Hijacking" user xfs for same uid & gid as user http on archlinux
-RUN sed -i "s|$OLD_USER:x:$APP_UID:$APP_GID:X Font Server:/etc/X11/fs:|$APP_USER:x:$APP_UID:$APP_GID:::|" /etc/passwd && \
-    sed -i "s|$OLD_GROUP:x:$APP_GID:$OLD_USER|$APP_GROUP:x:$APP_GID:|" /etc/group
+ARG APP_GROUP="$APP_USER"
+ARG APP_UID="33"
+ARG APP_GID="$APP_UID"
+RUN addgroup \
+    --gid "$APP_GID" \
+    "$APP_GROUP" && \
+    adduser \
+    --disabled-password \
+    --uid "$APP_UID" \
+    --no-create-home \
+    --gecos "$APP_USER" \
+    --ingroup "$APP_GROUP" \
+    --shell /sbin/nologin \
+    "$APP_USER"
 
 # Remove PHP version from paths & executable
 ARG BIN_DIR="/usr/bin"
