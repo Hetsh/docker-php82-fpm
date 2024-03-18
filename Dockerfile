@@ -1,7 +1,7 @@
-FROM amd64/alpine:20231219
+FROM amd64/alpine:20240315
 RUN apk add --no-cache \
-        php82=8.2.16-r0 \
-        php82-fpm=8.2.16-r0
+        php82=8.2.17-r0 \
+        php82-fpm=8.2.17-r0
 
 # App user
 ARG OLD_USER="xfs"
